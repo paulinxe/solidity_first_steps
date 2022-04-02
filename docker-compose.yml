@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  python_solidity:
+    build:
+      context: .
+      dockerfile: Dockerfile_python_solidity
+    volumes:
+      - ./Projects:/projects
+    network_mode: host
+    #extra_hosts:
+    #  - "host.docker.internal:host-gateway"
+
+  nodejs_ganache_cli:
+    build:
+      context: .
+      dockerfile: Dockerfile_nodejs_ganache
+    network_mode: host
