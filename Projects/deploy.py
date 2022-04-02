@@ -32,16 +32,16 @@ with open("./compiled.json", "w") as file:
 bytecode = compiled["contracts"]["SimpleStorage.sol"]["Storage"]["evm"]["bytecode"]["object"]
 abi = compiled["contracts"]["SimpleStorage.sol"]["Storage"]["abi"]
 
-# TODO: investigar sobre dotenv
+
 # Infura para deploy en testnet
 w3 = Web3(Web3.HTTPProvider("http://localhost:8545"))
 chain_id = 1337
-address = "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1"
-key = "0x4f3edf983ac636a65a842ce7c78d9aa706d3b113bce9c46f30d7d21715b23b1d"
+address = ""
+key = ""
 SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
 nonce = w3.eth.getTransactionCount(address)
 txn = SimpleStorage.constructor().buildTransaction({
-    "gasPrice": 3000, # TODO: check this out
+    "gasPrice": 3000,
     "chainId": chain_id,
     "from": address,
     "nonce": nonce
